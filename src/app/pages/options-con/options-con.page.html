@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Agendador de Consultas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--
+
+"Na-na, na-na, na-na, na-na, na, na
+Na-na, na-na, na-na, na-na, na, na
+Na-na, na-na, na-na, na-na, na, na
+Na-na, na-na, na-na, na-na, na, na"
+- Blink-182, "All The Small Things", 18 de Janeiro de 2000
+
+-->
+
+<ion-content color="danger" [fullscreen]="true"> <!-- vermelho realmente parece muito perigoso -->
+  <ion-button color="danger" href="home-con">Voltar</ion-button>
+    <ion-list>
+      <ion-item-sliding *ngFor="let tarefa of tarefas">
+        <ion-item (click)="abrirAcoes(tarefa)">
+          <ion-label *ngIf='!tarefa.feito'>{{tarefa.nome}}</ion-label>
+          <ion-label *ngIf='tarefa.feito'><del>{{tarefa.nome}}</del></ion-label>
+          <ion-icon *ngIf='!tarefa.feito' slot="start" name="radio-button-off" color="success"></ion-icon>
+          <ion-icon *ngIf='tarefa.feito' slot="start" name="checkmark-circle" color="success"></ion-icon>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="primary" (click)="adicionarTarefa()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  
+
+  <ion-card>
+    <ion-list>
+      <h4>Consultas disponiveis</h4>
+	  <ion-item><ion-label>Clínico geral</ion-label></ion-item>
+	  <ion-item><ion-label>Pediatra</ion-label></ion-item> <!-- que não é o médico responsável pela saúde dos pés -->
+      <ion-item><ion-label>Cardiologista</ion-label></ion-item>
+      <ion-item><ion-label>Fisioterapeuta</ion-label></ion-item>
+    </ion-list>
+  </ion-card>  
+
+<!-- gostaria de agradecer ao Gênio da Informática Kauã, meu colega e parceiro, me ajuda bastante com as atividades -->
+  
+</ion-content>
